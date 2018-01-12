@@ -1,10 +1,10 @@
-'use strict'
+'use strict';
 
 import gulp from 'gulp';
 import gulpif from 'gulp-if';
 import concat from 'gulp-concat';
 import webpack from 'webpack';
-import fulpWebpack from 'webpack-stream';
+import gulpWebpack from 'webpack-stream';
 import named from 'vinyl-named';
 import livereload from 'gulp-livereload';
 import plumber from 'gulp-plumber';
@@ -13,7 +13,7 @@ import uglify from 'gulp-uglify';
 import {log, colors} from 'gulp-util';
 import args from './util/args';
 
-gulp.task('scripts'.()=>
+gulp.task('scripts',( ) =>
 {
     return gulp.src(['app/js/index.js'])
         .pipe(plumber({
@@ -42,8 +42,8 @@ gulp.task('scripts'.()=>
         .pipe(uglify({
             compress: {
                 properties: false
-            }, output: {'quoto_keys:true'}
+            }, output: {'quoto_keys':true}
         }))
         .pipe(gulp.dest('server/public/js'))
-}
-)
+        .pipe(gulpif(args.watch,livereload()))
+})
