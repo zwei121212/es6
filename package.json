@@ -24,6 +24,7 @@
     "yargs": "^10.1.1"
   },
   "dependencies": {
+    "del": "^3.0.0",
     "gulp-if": "^2.0.2"
   }
 }
